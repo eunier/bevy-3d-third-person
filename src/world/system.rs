@@ -7,9 +7,22 @@ pub fn spawn_floor(
 ) {
     let floor = PbrBundle {
         mesh: meshes.add(Mesh::from(shape::Plane::from_size(15.0))),
-        material: materials.add(Color::DARK_GRAY.into()),
+        material: materials.add(Color::DARK_GREEN.into()),
         ..default()
     };
 
     commands.spawn(floor);
+}
+
+pub fn spawn_ligh(mut commands: Commands) {
+    let light = PointLightBundle {
+        point_light: PointLight {
+            intensity: 2000.0,
+            ..default()
+        },
+        transform: Transform::from_xyz(0.0, 5.0, 0.0),
+        ..default()
+    };
+
+    commands.spawn(light);
 }
