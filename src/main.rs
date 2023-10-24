@@ -1,14 +1,13 @@
 mod camera;
-mod light;
-mod world;
+
+mod map;
 
 use bevy::prelude::*;
 use camera::plugin::CameraPlugin;
-use light::plugin::LightPlugin;
-use world::plugin::WorldPlugin;
+use map::plugin::MapPlugin;
 
 fn main() {
     App::new()
-        .add_plugins((CameraPlugin, WorldPlugin, LightPlugin, DefaultPlugins))
+        .add_plugins((CameraPlugin, DefaultPlugins, MapPlugin))
         .run();
 }
