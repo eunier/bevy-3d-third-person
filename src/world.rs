@@ -1,6 +1,14 @@
 use bevy::prelude::*;
 
-pub fn spawn_floor(
+pub struct WorldPlugin;
+
+impl Plugin for WorldPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_systems(Startup, (spawn_floor, spawn_light));
+    }
+}
+
+fn spawn_floor(
     mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
@@ -14,7 +22,7 @@ pub fn spawn_floor(
     commands.spawn(floor);
 }
 
-pub fn spawn_light(mut commands: Commands) {
+fn spawn_light(mut commands: Commands) {
     let light = PointLightBundle {
         point_light: PointLight {
             intensity: 2000.0,

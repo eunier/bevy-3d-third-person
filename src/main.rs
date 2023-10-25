@@ -1,14 +1,21 @@
-mod camera;
-mod map;
-mod player;
+use bevy::{prelude::*, DefaultPlugins};
+use bevy_third_person_camera::*;
+use camera::CameraPlugin;
+use player::PlayerPlugin;
+use world::WorldPlugin;
 
-use bevy::prelude::*;
-use camera::plugin::CameraPlugin;
-use map::plugin::MapPlugin;
-use player::plugin::PlayerPlugin;
+mod camera;
+mod player;
+mod world;
 
 fn main() {
     App::new()
-        .add_plugins((CameraPlugin, DefaultPlugins, MapPlugin, PlayerPlugin))
+        .add_plugins((
+            DefaultPlugins,
+            PlayerPlugin,
+            WorldPlugin,
+            CameraPlugin,
+            ThirdPersonCameraPlugin,
+        ))
         .run();
 }
