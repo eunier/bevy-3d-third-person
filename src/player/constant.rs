@@ -1,1 +1,0 @@
-pub const PLAYER_SPEED_MULTIPLIER: f32 = 2.0;
